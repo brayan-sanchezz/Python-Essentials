@@ -1,16 +1,19 @@
-
+#variables
 name = (input("Enter the name of company: "))
 time = int (input("Enter the time of use in seconds: "))
 rate = float(input("Enter the hourly price: "))
 
+#convert seconds
 h = time // 3600
 m = (time % 3600) // 60
 s = time % 60
 
+#calculos
 subtotal = (time / 3600) * rate
 iva = subtotal * 0.16
 total = iva + rate
 
+#SERVICE INVOICE
 print("=" * 40)
 print( "           SERVICE INVOICE")
 print("=" * 40)
