@@ -28,18 +28,29 @@ for codes in new_list :
         safe_trafic.append(codes)
 
 #buble sort algoritm (ordered lists)
-for i in range(len(threats) -1 ) :
-    if threats[i] < threats[i+1] :
-        threats[i], threats[i+1] = threats[i+1], threats[i]
+n = len(threats)
+for i in range(n) :
+    for j in range(n-i-1):
+         if threats[j] < threats[j+1] :
+             threats[j], threats[j+1] = threats[j+1], threats[j]
 
-for i in range(len(safe_trafic) -1 ) :
-    if safe_trafic[i] < safe_trafic[i+1] :
-        safe_trafic[i], safe_trafic[i+1] = safe_trafic[i+1], safe_trafic[i]  
+k = len(safe_trafic)
+for i in range(k) :
+    for j in range(k-i-1) :
+         if safe_trafic[j] < safe_trafic[j+1] :
+            safe_trafic[j], safe_trafic[j+1] = safe_trafic[j+1], safe_trafic[j]  
 
-if len(threats) > 3 :
-    top_threats = slice(0, 3)
-    print (threats[top_threats])
 
-print (threats)
-print (safe_trafic)
-    
+#top 3 threats
+if len(threats) >= 3 :
+    top = threats[0:3]
+   
+
+#output
+print("=" * 40)
+print("         REPORTE DE SEGURIDAD")
+print("=" * 40)
+print("Registered Secure Traffic: ", safe_trafic)
+print("Threats detected (sorted): ", threats)
+print("Top three critical threats: ", top)
+print("=" * 40)
