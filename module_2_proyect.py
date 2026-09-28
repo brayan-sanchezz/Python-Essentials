@@ -20,7 +20,7 @@ print("=" * 40)
 print("Client:", '"'+ name + '"')
 print("Usage time: ",h, "h:",m, "m:",s, "s")
 
-print("\nSubtotal: $",rate)
+print("\nSubtotal: $", subtotal)
 print("IVA (16%): " "$", iva)
 print("-" * 40)
 print("TOTAL TO BE PAID: " "$",total)
