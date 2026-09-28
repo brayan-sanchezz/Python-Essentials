@@ -44,7 +44,8 @@ for i in range(k) :
 #top 3 threats
 if len(threats) >= 3 :
     top = threats[0:3]
-   
+else:
+    top = "[ ]"
 
 #output
 print("=" * 40)
