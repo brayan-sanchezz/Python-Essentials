@@ -1,10 +1,10 @@
 print("=" * 40)
 print("     NETINVENTORY - Network Manager")
 print("=" * 40)
-print("1. Add device")
+print("\n1. Add device")
 print("2. Search inventory")
 print("3. Show inventory")
-print("4. Exit \n")
+print("4. Exit")
 
 inventory = {}
 
@@ -16,27 +16,32 @@ def request_integer(message):
         except:
             print("[Error] Enter a valid character")
 
-def add_device(ip, name, type, port=22):
-    inventory[ip] = (name, type, port)
-    return print("Device", ip, "successfully registered.")
+def add_device(ip, name, kind, port=22):
+    inventory[ip] = (name, kind, port)
+    return print("\nDevice", ip, "successfully registered.")
 
 def search_device(search) :
     if search in inventory :
-        return print(inventory[search])
+        s = inventory[search]
+        return print("DEVICE:", name, "| TYPE:", kind, "| PORT:", port)
     else :
-        return None
+        return print("IP not found")
         
 def show_inventory():
-    print("-" * 3, INVENTORY, "-" * 3)
-    print("IP:", ip, "Device:", name, "Type:", kind, "Port", port, sep="|")
-
+    print("\n--- INVENTORY ---")
+    for ip, (name, kind, port) in inventory.items():
+        print("IP:", ip, "| DEVICE:", name, "| TYPE:", kind, "| PORT:", port)
+    print("=" * 50)
 
 
 while True :
-    select = int(input("Select an option: "))
-
+        
+    select = request_integer("\nSelect an option (1, 2, 3, 4): ")
+    if select < 1 or select > 4 :
+        print("PLEASE ENTER A VALID OPCION")
+            
     if select == 1 :
-        ip = request_integer("Enter IP: ")
+        ip = request_integer("\nEnter IP: ")
         name = input("Enter name: ")
         kind = input("Enter type (Router/Switch/Firewall): ")
         port = input("Enter port: ")
@@ -47,7 +52,7 @@ while True :
             add_device(ip, name, kind)
 
     if select == 2 :
-        search = request_integer("Enter the IP address you want to search for: ")
+        search = request_integer("\nEnter the IP address you want to search for: ")
         search_device(search)
 
     if select == 3 : 
@@ -55,3 +60,4 @@ while True :
 
     if select == 4 :
         break
+    
