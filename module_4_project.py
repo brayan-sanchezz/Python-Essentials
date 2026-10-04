@@ -13,19 +13,19 @@ def request_integer(message):
         try:
             result = int(input(message))
             return result
-        except:
-            print("[Error] Enter a valid character")
+        except ValueError:
+            print("[Error] Enter a valid character. ")
 
 def add_device(ip, name, kind, port=22):
     inventory[ip] = (name, kind, port)
-    return print("\nDevice", ip, "successfully registered.")
+    print("\nDevice", ip, "successfully registered.")
 
 def search_device(search) :
     if search in inventory :
-        s = inventory[search]
-        return print("DEVICE:", name, "| TYPE:", kind, "| PORT:", port)
+        name, kind, port = inventory[search]
+        print("DEVICE:", name, "| TYPE:", kind, "| PORT:", port)
     else :
-        return print("IP not found")
+        print("IP not found")
         
 def show_inventory():
     print("\n--- INVENTORY ---")
@@ -35,13 +35,13 @@ def show_inventory():
 
 
 while True :
-        
+
     select = request_integer("\nSelect an option (1, 2, 3, 4): ")
     if select < 1 or select > 4 :
         print("PLEASE ENTER A VALID OPCION")
             
     if select == 1 :
-        ip = request_integer("\nEnter IP: ")
+        ip = input("\nEnter IP: ")
         name = input("Enter name: ")
         kind = input("Enter type (Router/Switch/Firewall): ")
         port = input("Enter port: ")
@@ -52,7 +52,7 @@ while True :
             add_device(ip, name, kind)
 
     if select == 2 :
-        search = request_integer("\nEnter the IP address you want to search for: ")
+        search = input("\nEnter the IP address you want to search for: ")
         search_device(search)
 
     if select == 3 : 
